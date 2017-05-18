@@ -5,18 +5,81 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block title %}{% endblock %}</title>
     <meta name="description" content="nju">
-    <meta name="keywords" content="quanter">
+    <meta name="keywords" content="Stock">
 
     <link rel="stylesheet" type="text/css" href="../static/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="../static/css/bootstrap-table.css">
     <link rel="stylesheet" type="text/css" href="../static/css/bootstrap-select.min.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/common.css">
+<!--     <link rel="stylesheet" type="text/css" href="../static/css/jquery.bxslider.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/animate.css"> -->
         
     {% block css %}{% endblock %}
 
 </head>
 
 <body>
+<div id="myDiv">
+
+    <header id="main-header">
+        <nav class="navbar navbar-default  navbar-fixed-top-1 top-nav-collapse" >
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">量化<span class="logo-dec">交易系统</span></a>
+                </div>
+                <div class="collapse navbar-collapse " id="myNavbar" >
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class=""><a href="/index">首页</a></li>
+                        <li class=""><a href="">3k5k策略</a></li>
+                        <li class=""><a href="/ENE">ENE策略</a></li>
+                        <li class=""><a href="">最高量最高价策略</a></li>
+                        
+                        <li class="" id="login"><a href="/admin">登录</a></li>               
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id = "user"></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="">股票池</a></li>
+                                <li><a href="">注销</a></li>
+                              </ul>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    
 	{% block container %}{% endblock %}
+	
+	<footer id="footer" class="footer" >
+        <div class="container">
+            <div class="row text-center">
+                <p>&copy; 南京大学股票投资策略研究小组. <br>
+                    All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+</div>
+{% block datajs %}{% endblock %}
+
+<script src="../static/js/jquery.min.js"></script>
+<script src="../static/js/jquery.easing.min.js"></script>
+<script src="../static/js/bootstrap.min.js"></script>
+<script src="../static/js/jquery.bxslider.min.js"></script>
+<script src="../static/js/bootstrap-select.min.js"></script>
+<script src="../static/js/bootstrap-table.js"></script>
+<script src="../static/js/bootstrap-table-zh-CN.js"></script>
+<!-- <script src="../static/js/custom.js"></script>
+<script src="../static/js/wow.js"></script> -->
+
+{% block js %}{% endblock %}
 </body>
 </html>
