@@ -1,8 +1,63 @@
 {% extends "basePage.html" %}
 {% block title %}ENE策略{% endblock %}
 
+{% block css %}<link rel="stylesheet" type="text/css" href="../static/css/strategy.css">{% endblock %}
+
 {% block container %}
-	<div class="container">
-		<h1>ENE</h1>
+	<div class="container mycontainer">
+		<div class="col-md-12">
+       	 	<p class="titleword">策略描述</p>
+       		<p>利用“高抛低吸”法则</p>
+       		<p>股价碰到下轨买入，碰到上轨卖出，用户可以自定义买卖条件</p>
+   		</div>
+    	<div class="col-md-12">
+       	 	<p class="titleword">参数训练</p>
+       	 	<form class="form-horizontal" role="form">
+       	 		<div  class="form-group">
+       	 			<label class="col-md-2" style="text-align:right">训练股票：</label>
+       	 			<div class="col-md-6">
+       	 			     <input type="text" class="form-control"  id="code"  placeholder="sh600000" style="width:60%; display:inline; margin-bottom: 20px;"> 	 			
+       	 			</div>
+       			</div>
+       			
+       			<div  class="form-group">
+       				<label class="col-md-2" style="text-align:right">开始时间：</label>
+       				<div class="col-md-4 input-group date form_date" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+       					<input type="text" class="form-control"  id="start"  placeholder="start" style="width:94%; display:inline; margin-bottom: 20px;">
+       					<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+       				</div>
+       				<label class="col-md-2" style="text-align:right">结束时间：</label>
+       				<div class="col-md-4 input-group date form_date"  data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+       					<input type="text" class="form-control"  id="end"  placeholder="end" style="width:94%; display:inline; margin-bottom: 20px;">
+       					<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+       				</div>
+       	 		</div>	
+       	 	</form>   	 	
+    	</div>
+		
 	</div>
 {% endblock %}
+
+
+{% block js %}
+
+<script src="../static/js/date.js"></script>
+<script src="../static/js/moment.min.js"></script>
+<script src="../static/js/pikaday.js"></script>
+<script src="../static/js/wow.js"></script>
+<script src="../static/js/bootstrap-datetimepicker.fr.js"></script>
+<script src="../static/js/bootstrap-datetimepicker.js"></script>
+
+{% endblock %}
+<script type="text/javascript">
+$('.form_date').datetimepicker({
+    format:"yyyy-mm-dd",
+    weekStart: 1,
+    todayBtn:  1,
+    autoclose: 1,
+    todayHighlight: 1,
+    startView: 2,
+    minView: 2,
+    forceParse: 0
+});
+</script>
