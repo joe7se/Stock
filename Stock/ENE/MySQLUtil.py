@@ -54,9 +54,9 @@ class MySQLUtil():
                 code = row[0]
                 date = row[1]
                 high = row[3]
-                low = row[5]
+                low = row[4]
                 open = row[2]
-                close = row[4]
+                close = row[5]
                 stockEneInfo = StockEneInfo()
                 stockEneInfo.setCode(code)
                 stockEneInfo.setDate(date)
@@ -69,6 +69,71 @@ class MySQLUtil():
             print "Error: unable to fecth data"
         self.releaseConnection(connection)
         return stockEneInfos
-#         print stockEneInfos[0].getDate()
+    
+    '''获取某一个股票的信息'''   
+    def getAllStockHourInfos(self,stockCode, start_date, end_date):
+        stockEneInfos = []
+        helper = MySQLHelperUtil()
+        stockName = helper.getStockHourInfoTableName(stockCode)
+        connection = self.getConnection()
+        cursor = connection.cursor()
+        sql = "select * from " + stockName + " where code = '%s' and date between '%s' and '%s'" % (stockCode, start_date, end_date)
+        print sql
+        try:
+            cursor.execute(sql)
+            results = cursor.fetchall()
+            for row in results:
+                code = row[0]
+                date = row[1]
+                high = row[3]
+                low = row[4]
+                open = row[2]
+                close = row[5]
+                stockEneInfo = StockEneInfo()
+                stockEneInfo.setCode(code)
+                stockEneInfo.setDate(date)
+                stockEneInfo.setHigh(high)
+                stockEneInfo.setLow(low)
+                stockEneInfo.setOpen(open)
+                stockEneInfo.setClose(close)
+                stockEneInfos.append(stockEneInfo)
+        except:
+            print "Error: unable to fecth data"
+        self.releaseConnection(connection)
+        return stockEneInfos
+    
+#     '''获取几小时内股票的信息'''   
+#     def getStockEneHourInfos(self,stockCode, start_time, hours):
+#         stockEneInfos = []
+#         helper = MySQLHelperUtil()
+#         stockName = helper.getStockHourInfoTableName(stockCode)
+#         connection = self.getConnection()
+#         cursor = connection.cursor()
+#         sql = "select * from " + stockName + " where code = '%s' and date >= '%s' limit %d" % (stockCode, start_time,hours)
+#         print sql
+#         try:
+#             cursor.execute(sql)
+#             results = cursor.fetchall()
+#             for row in results:
+#                 code = row[0]
+#                 date = row[1]
+#                 high = row[3]
+#                 low = row[4]
+#                 open = row[2]
+#                 close = row[5]
+#                 stockEneInfo = StockEneInfo()
+#                 stockEneInfo.setCode(code)
+#                 stockEneInfo.setDate(date)
+#                 stockEneInfo.setHigh(high)
+#                 stockEneInfo.setLow(low)
+#                 stockEneInfo.setOpen(open)
+#                 stockEneInfo.setClose(close)
+#                 stockEneInfos.append(stockEneInfo)
+#         except:
+#             print "Error: unable to fecth data"
+#         self.releaseConnection(connection)
+#         return stockEneInfos
+        
 # p=MySQLUtil()
-# p.getStockEneInfos("sh600011")
+# 
+# p.getStockEneHourInfos("sh600011",'2014-03-03 10:00:00',3)
