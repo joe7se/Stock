@@ -1,22 +1,47 @@
-function train(){	
+function train(){
 	var code=$("#code").val();
 	var start = $("#start").val();
 	var end = $("#end").val();
 	$.get("/ENE/train?code="+code+"&start="+start+"&end="+end,function(data,status){
-		var dataarray = []
+		dataArray = [];
+		var i=0;
 		for(var d in data){
-            d = data[d]
-            var temp = {}
-            temp.upper = d[0]
-            temp.lower = d[1]
-            temp.days = d[2]
-            dataarray.push(temp)
-        }
-//		obj = JSON.parse(dataarray);
-		document.getElementById("m1").innerHTML = dataarray[0].upper;
-		alert(dataarray[0].upper);
-		document.getElementById("m2").innerHTML = dataarray[0].lower;
-		document.getElementById("n").innerHTML = dataarray[0].days;
+			d = data[i];
+			
+			i++;
+			var temp = {}
+			temp.upper = d.upper
+			temp.lower = d.lower
+			temp.days = d.days
+			alert(temp.upper)
+			dataArray.push(temp)
+		}
+		alert(dataArray);
+		$('#title').append('<h4>最优参数</h4>');
+		$('#bestPara').bootstrapTable({
+			striped: true,
+        	sidePagination: "client",
+        	pageNumber: 1,
+        	pageSize: 10,
+        	pageList: [10, 25, 50, 100],
+        	clickToSelect: true,
+        	columns: [{
+            	field: 'upper',
+            	title: 'M1',
+           		width:150
+        	}, {
+            	field: 'lower',
+            	title: 'M2',
+            	width:150
+       	 	}, {
+       	 		field: 'days',
+            	title: 'days',
+            	width:150
+       	 	}],
+       	 	
+        	data: dataArray 
+		});
+		$('#bestPara').bootstrapTable("load",dataArray);
 		
 	})
 }

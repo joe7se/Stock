@@ -289,8 +289,8 @@ class EneQuotaUtil:
         avgClose = allClose / len(closeList)
         return avgClose
 
-p = EneQuotaUtil()
-p.getAllStocksParam()
+# p = EneQuotaUtil()
+# p.getAllStocksParam()
 # ene = EneParameter();
 # ene.set_days(5);
 # ene.set_lower(9);

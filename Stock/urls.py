@@ -21,4 +21,5 @@ urlpatterns = [
     url(r'^admin/',admin.site.urls),
     url(r'^index$',login.index),
     url('^ENE$',ENEStrategy.ENE),
+    url('^ENE/train$',ENEStrategy.ENE_training),
 ]

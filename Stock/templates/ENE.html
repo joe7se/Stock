@@ -15,41 +15,34 @@
        	 		<div  class="form-group">
        	 			<label class="col-md-2" style="text-align:right">训练股票：</label>
        	 			<div class="col-md-6">
-       	 			     <input type="text" class="form-control"  id="code"  placeholder="sh600000" style="width:60%; display:inline; margin-bottom: 20px;"> 	 			
+       	 			     <input type="text" class="form-control"  id="code"  placeholder="" style="width:63%; display:inline; margin-bottom: 20px;margin-left:-15px"> 	 			
        	 			</div>
-       	 			<div class="col-md-4">
-       	 				<button type="button" class="btn btn-primary submit-btn" id="confirm" onclick="train()">训练</button>
-       	 			</div>
+       	 			
        			</div>
        			
        			<div  class="form-group">
        				<label class="col-md-2" style="text-align:right">开始时间：</label>
-       				<div class="col-md-4 input-group date form_date" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+       				<div class="col-md-6 input-group date form_date" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
        					<input type="datetime-local" class="form-control"  id="start"  placeholder="start" style="width:60%; display:inline; margin-bottom: 20px;">
        				</div>
        				<label class="col-md-2" style="text-align:right">结束时间：</label>
-       				<div class="col-md-4 input-group date form_date"  data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+       				<div class="col-md-6 input-group date form_date"  data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
        					<input type="datetime-local" class="form-control"  id="end"  placeholder="end" style="width:60%; display:inline; margin-bottom: 20px;">
-       					
        				</div>
+       				<div class="col-md-offset-4 col-md-2">
+       	 				<button type="button" class="btn btn-primary submit-btn" id="confirm" onclick="train()" style="width:80%">训练</button>
+       	 			</div>
        	 		</div>	
        	 	</form>   
-       	 	<form class="form-horizontal" role="form">
-       	 	<div  class="form-group">
-       				<label class="col-md-2" style="text-align:right">M1：</label>
-       				<div class="col-md-2">
-       					<input type="text" class="form-control" id="m1" style="width:94%; display:inline; margin-bottom: 20px;">
-       				</div>
-       				<label class="col-md-2" style="text-align:right">M2：</label>
-       				<div class="col-md-2">
-       					<input type="text" class="form-control" id="m2" style="width:94%; display:inline; margin-bottom: 20px;">
-       				</div>
-       				<label class="col-md-2" style="text-align:right">N：</label>
-       				<div class="col-md-2">
-       					<input type="text" class="form-control" id="n" style="width:94%; display:inline; margin-bottom: 20px;">
-       				</div>
+       	 	
+       	 	<div>
+       	 		
+       	 		<div id="title" style="margin-left:50px"></div>
+       	 		<div class="col-md-offset-1 col-md-10">
+       	 			
+       	 			<table id="bestPara"></table>
        	 		</div>
-       	 	</form>	 	
+       	 	</div> 	
     	</div>
 		
 	</div>
