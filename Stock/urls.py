@@ -16,10 +16,12 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from . import ENEStrategy
+from . import VolumeAndPrice
 import login
 urlpatterns = [
     url(r'^admin/',admin.site.urls),
     url(r'^index$',login.index),
     url('^ENE$',ENEStrategy.ENE),
     url('^ENE/train$',ENEStrategy.ENE_training),
+    url('^Volume$',VolumeAndPrice.Volume),
 ]
