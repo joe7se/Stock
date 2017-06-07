@@ -3,31 +3,109 @@
 
 
 {% block container %}
+	<div class="container mycontainer">
+		<!-- 策略描述  -->
+		<div class="col-md-offset-1 col-md-10">
+       	 	<p class="titleword">策略描述</p>
+            <p>根据在最高成交量出现后一段时间内会出现更高价的规律，选取规律匹配度较高的股票，价格低时买入，出现更高价时卖出，用户可以自定义时间周期</p>
+   		</div>
 
+   		<!-- 各支股票的1个月、2个月、3个月的匹配率  -->
+    	<div class="col-md-offset-1 col-md-10">
+       	 	<p class="titleword">匹配率</p>
+       	 	<form class="form-horizontal" role="form">
+       	 		<div  class="form-group">
+       	 			<label class="col-md-2" style="text-align:right">股票范围：</label>
+					<select id = "selectGroup" class="selectpicker dis-con col-md-3" title="您预设的股票组">
+						<option value="1">自定义股票组1</option>
+                    	<option value="2">自定义股票组2</option>
+                    	<option value="3">自定义股票组3</option>
+					</select>
+       			</div>
+
+       			<div  class="form-group">
+       				<label class="col-md-2" style="text-align:right">开始时间：</label>
+       				<div class="col-md-4" >
+       					<input type="datetime-local" class="form-control"  id="start"  placeholder="start" style="width:85%; display:inline">
+       				</div>
+       				<label class="col-md-2" style="text-align:right">结束时间：</label>
+       				<div class="col-md-4" >
+       					<input type="datetime-local" class="form-control"  id="end"  placeholder="end" style="width:85%; display:inline">
+       				</div>
+       	 		</div>
+       	 	</form>
+
+       	 	<div class="col-md-offset-10 col-md-2">
+       	 				<button type="button" class="btn btn-primary submit-btn" id="confirm" onclick="train()" style="width:80%">匹配</button>
+       	 	</div>
+
+       	 	<div class="col-md-12">
+       	 		<table id="bestPara"></table>
+       	 	</div>
+
+    	</div>
+
+		<!-- 选定股票回测时的收益情况  -->
+		<div class="col-md-offset-1 col-md-10">
+			<p class="titleword">回测</p>
+
+            <form class="form-horizontal" role="form">
+				<div class="form-group">
+					<label class="col-md-2" style="text-align:right">股票代码：</label>
+					<div class="col-md-4">
+       	 			     <input type="text" class="form-control"  id="code"  placeholder="" style="width:54%; display:inline">
+       	 			</div>
+{#                    <div>#}
+{#                        <select id = "selectGroup" class="selectpicker dis-con col-md-2">#}
+{#						    <option value="1" selected>一个月</option>#}
+{#                    	    <option value="2">两个月</option>#}
+{#                    	    <option value="3">三个月</option>#}
+{#					    </select>#}
+{#                    </div>#}
+
+                    <label class="col-md-2" style="text-align:right">时间周期：</label>
+					<div>
+                        <select id = "selectGroup" class="selectpicker dis-con col-md-2">
+						    <option value="1" selected>一个月</option>
+                    	    <option value="2">两个月</option>
+                    	    <option value="3">三个月</option>
+					    </select>
+                    </div>
+				</div>
+
+
+       	 	</form>
+
+       	 	<div class="col-md-offset-10 col-md-2">
+       	 				<button type="button" class="btn btn-primary submit-btn" onclick="" style="width:80%; margin-bottom: 20px">运算</button>
+       	 	</div>
+		</div>
+
+	</div>
 
 
 {% endblock %}
 
-{#{% block js %}#}
-{##}
-{#<script src="../static/js/moment.min.js"></script>#}
-{#<script src="../static/js/pikaday.js"></script>#}
-{#<script src="../static/js/wow.js"></script>#}
-{#<script src="../static/js/bootstrap-datetimepicker.fr.js"></script>#}
-{#<script src="../static/js/bootstrap-datetimepicker.js"></script>#}
-{#<script src="../static/js/ENE.js"></script>#}
-{##}
-{#{% endblock %}#}
-{##}
-{#<script type="text/javascript">#}
-{#$('.form_date').datetimepicker({#}
-{#    format:"yyyy-mm-dd",#}
-{#    weekStart: 1,#}
-{#    todayBtn:  1,#}
-{#    autoclose: 1,#}
-{#    todayHighlight: 1,#}
-{#    startView: 2,#}
-{#    minView: 2,#}
-{#    forceParse: 0#}
-{#});#}
-{#</script>#}
+{% block js %}
+
+<script src="../static/js/moment.min.js"></script>
+<script src="../static/js/pikaday.js"></script>
+<script src="../static/js/wow.js"></script>
+<script src="../static/js/bootstrap-datetimepicker.fr.js"></script>
+<script src="../static/js/bootstrap-datetimepicker.js"></script>
+<script src="../static/js/ENE.js"></script>
+
+{% endblock %}
+
+<script type="text/javascript">
+$('.form_date').datetimepicker({
+    format: "yyyy-mm-dd",
+    weekStart: 1,
+    todayBtn: 1,
+    autoclose: 1,
+    todayHighlight: 1,
+    startView: 2,
+    minView: 2,
+    forceParse: 0
+});
+</script>
